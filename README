@@ -1,0 +1,72 @@
+== What is BGLConverter ==
+BGLConverter is a cross-platform tool that converts dictionary files into other
+formats. Supported formats are BGL, DIC, OPF and MOBI.
+It is written in Python. It has both a command line interface and a graphical
+interface, written in python/PyQt4.
+For the MOBI format, it requires the external tool mobigen_linux, which can be
+downloaded from the MobiPocket website.
+
+== Supported input formats ==
+* BGL (babylon packed dictionaries)
+* Unpacked BGL (called ubgl by me)
+* DIC files (subsequent 2-lines entries in a text file, one line for the the
+  term, one line for the definition)
+* OPF (Open Package File) e-book with MobiPocket extensions
+
+
+== Supported output formats ==
+* Unpacked BGL (see above)
+* DIC (see above)
+* OPF (see above)
+* MOBI (MobiPocket e-book format, here used only for dictionaries)
+
+
+== Software requirements ==
+BGLConverter is divided into 2 tools:
+* bglconverter.py, the commandline version
+* qtbglconverter.py, the Qt4 GUI
+
+The command line version needs Python (http://www.python.org) 2.5 and greater
+to run, just install it and run from a command line. If you don't know what it
+is, use the GUI instead.
+The GUI needs PyQt4 in order to run. Install the latest version from
+* http://www.riverbankcomputing.com/software/pyqt/download (for PyQt4)
+Then just double click on qtbglconverter.py.
+I will probably switch to PySide as soon as I will have time for it.
+On Microsoft Windows: if you don't want qtbglconverter.py to open a DOS prompt
+every time you run it, just rename it to qtbglconverter.pyw.
+Charset detection is made by the chardet library.
+
+Tested only on Linux and Windows, it should run also on FreeBSD and Mac OS X,
+except for the conversion to the MOBI format, which relies on an external tool
+made by MobiPocket.
+
+== References ==
+* Some code is based on tab2opf.py.
+* The BGL file format reversing is based on the work found at
+  http://www.woodmann.com/forum/archive/index.php/t-7028.html, with further
+  integrations by me.
+* Logging facilities provided by Giuseppe Coviello <cjg@cruxppc.org>
+
+
+== License ==
+See the LICENSE file in the main directory.
+
+
+== Contacts ==
+For any question or suggestion, don't hesitate to contact me, possibly giving
+all the information you can. See Authors, below.
+
+
+== Authors ==
+Andrea Barberio <insomniac@slackware.it>
+
+
+== Changelog ==
+Mar 16, 2009: First public release. Commandline and GUI just work apparently
+              fine. Need some fix and improvement, e.g., implement
+              multithreading where possible (I don't have control over the
+              opf->mobi conversion process, which is the most CPU expensive
+              task). Freeze the code into standalone executables who don't
+              need Python/Qt4/PyQt4 installed into your system.
+
